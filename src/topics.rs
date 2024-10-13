@@ -87,3 +87,56 @@ pub fn data_types() {
     // index out of bounds: the len is 5 but the index is 10
     // note: run with `RUST_BACKTRACE=1` environment variable to    display a backtrace
 }
+
+pub fn functions() {
+    // functions declaration
+    // use fn keyword for defining functions
+    fn sample_fn() {
+        // --- logic here
+    }
+
+    // function calling
+    sample_fn();
+
+    // parameters
+    fn p_fn(num: i32) {
+        // ----we can acces the num inside the function
+        println!("{}", num); // this will print the num variable
+    }
+    //  ---- must declare type of each parameter
+
+    // statements and expressions
+
+    // statements wont return anything
+    // expressions return something
+
+    let x = 6;
+    // this is a statement ie it doesnt return any value
+
+    // if we try to assign -- let x = (let x = 6);
+    // it will throw an error because we are trying to assign an statment which doesnt return anything
+
+    fn main() {
+        let y = {
+            let x = 3;
+            x
+        };
+    
+        println!("The value of y is: {y}");
+    }
+
+    // this wont throw any error because the block
+    // {
+    //     let x = 3;
+    //     x
+    // };
+    // is returning the x
+
+    // we can return a value with return keyword or just simply puting the variable or value like this
+
+    fn five() -> i32 {
+        5
+    }
+
+    // if we use 5;(semicolon) it will throw an error
+}
