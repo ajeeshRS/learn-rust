@@ -121,7 +121,7 @@ pub fn functions() {
             let x = 3;
             x
         };
-    
+
         println!("The value of y is: {y}");
     }
 
@@ -139,4 +139,135 @@ pub fn functions() {
     }
 
     // if we use 5;(semicolon) it will throw an error
+}
+
+pub fn control_flow() {
+    // if expressions
+    let x = 6;
+    if x == 6 {
+        println!("Equal");
+    } else {
+        println!("nothing");
+    }
+
+    // expects bool
+    // if we use
+    // if x {
+    //     println!("number was three");
+    // }
+    // it will throw this error
+    //  --mismatched types
+    //  --expected `bool`, found integer
+
+    // Rust will not automatically try to convert non-Boolean types to a Boolean
+
+    // we can handle multiple condition using elseif
+
+    if x == 5 {
+        //
+    } else if x == 4 {
+        //
+    } else if x == 9 {
+        //
+    } else {
+        //
+    }
+
+    // using if in a let statement
+    fn main() {
+        let condition = true;
+        let number = if condition { 5 } else { 6 };
+
+        println!("The value of number is: {number}");
+    }
+
+    // if we use   --let number = if condition { 5 } else { "six" };
+    // it will throw an error- if else arm mismatched
+
+    // loop
+
+    // Rust has three kinds of loops: loop, while, and for
+
+    loop {
+        println!("hi again");
+    } // it will run infinitely until we manually stop the program
+
+    // We can use the 'break' keyword to exit the loop entirely.
+    // We can use 'continue' to skip the remaining part of the loop's body and jump to the next iteration.
+
+    // returning value from loop
+    let mut counter = 0;
+
+    let result = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2;
+        }
+    };
+    println!("The result is {result}");
+
+    // loop labels for differentiate multiple loops
+    // If you have loops within loops, break and continue apply to the innermost loop at that point. You can optionally specify a loop label on a loop that you can then use with break or continue to specify that those keywords apply to the labeled loop instead of the innermost loop. Loop labels must begin with a single quote. Here’s an example with two nested loops:
+
+    let mut count = 0;
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+
+        count += 1;
+    }
+    println!("End count = {count}");
+    // The outer loop has the label 'counting_up, and it will count up from 0 to 2. The inner loop without a label counts down from 10 to 9. The first break that doesn’t specify a label will exit the inner loop only. The break 'counting_up; statement will exit the outer loop. This code prints:
+
+    // $ cargo run
+    //    Compiling loops v0.1.0 (file:///projects/loops)
+    //     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.58s
+    //      Running `target/debug/loops`
+    // count = 0
+    // remaining = 10
+    // remaining = 9
+    // count = 1
+    // remaining = 10
+    // remaining = 9
+    // count = 2
+    // remaining = 10
+    // End count = 2
+
+    // while
+    let mut number = 3;
+
+    while number != 0 {
+        println!("{number}!");
+
+        number -= 1;
+    }
+    // This construct eliminates a lot of nesting that would be necessary if you used loop, if, else, and break, and it’s clearer. While a condition evaluates to true, the code runs; otherwise, it exits the loop.
+
+    // for
+    let a = [10, 20, 30, 40, 50];
+
+    for element in a {
+        println!("the value is: {element}");
+    }
+
+    for number in (1..4).rev() {
+        println!("{number}!");
+    }
+    // this will setup a countdown 4,3,2,1
+    // 1..4 --ranging 1-4
+    // .rev() for reversing the order
+
+    
 }
