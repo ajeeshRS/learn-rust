@@ -2,6 +2,8 @@ use rand::Rng; //random number generator - external crate
 use std::cmp::Ordering; //comparing with ordering
 use std::io; // standard input/output library
 mod topics; // declare as a module
+mod macros;
+
 fn main() {
     println!("Guessing game!");
     // generating a random number within 0 - 100
